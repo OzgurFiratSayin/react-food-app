@@ -53,6 +53,13 @@ const Checkout = (props) => {
     if (!formIsValid) {
       return;
     }
+
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      postcode: enteredPostcode,
+      city: enteredCity
+    });
   }
 
   return (
@@ -72,7 +79,7 @@ const Checkout = (props) => {
         <input type='text' id='postal'ref={postcodeInputRef} />
         {!formInputsValidity.postcode && <p>Please enter a valid postcode.</p>}
       </div>
-      <div className={`${classes.control} ${formInputsValidity.postcode ? '' : classes.invalid}`}>
+      <div className={`${classes.control} ${formInputsValidity.city ? '' : classes.invalid}`}>
         <label htmlFor='city'>City</label>
         <input type='text' id='city'ref={cityInputRef} />
         {!formInputsValidity.city && <p>Please enter a valid city.</p>}
